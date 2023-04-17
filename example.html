@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+    <title>PageTitle</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+   <!-- Convert this to an external style sheet -->
+   <style>
+       main>.container {
+           padding: 60px 15px 0;
+           margin-bottom: 5rem;
+       }
+       .sticky-footer {
+           position: sticky;
+           left: 0;
+           bottom: 0;
+           width: 100%;
+       }
+   </style>
+</head>
+
+<body class="d-flex flex-column h-100">
+
+    <main class="flex-shrink-0">
+       <div class="container">
+        <div class="row">
+            <div class="col-10"><h2>Braden Scale for Predicting Pressure Sore Risk</h2></div>
+        </div>
+        
+        <div class="row">
+            <div class="col-12">[Label_BradenSensPercep] - ability to respond meaningfully to pressure-related discomfort</div>
+            <div class="col-4 mb-2">[Control_BradenSensPercep]</div>
+        </div>
+        <div class="row">
+            <div class="col-12">[Label_BradenMoisture] - degree to which skin is exposed to moisture</div>
+            <div class="col-4 mb-2">[Control_BradenMoisture]</div>
+        </div>
+        <div class="row">
+            <div class="col-12">[Label_BradenActivity] - degree of physical activity</div>
+            <div class="col-4 mb-2">[Control_BradenActivity]</div>
+        </div>
+        <div class="row">
+            <div class="col-12">[Label_BradenMobility] - ability to change and control body position</div>
+            <div class="col-4 mb-2">[Control_BradenMobility]</div>
+        </div>
+        <div class="row">
+            <div class="col-12">[Label_BradenNutrition] - usual food intake pattern</div>
+            <div class="col-4 mb-2">[Control_BradenNutrition]</div>
+        </div>
+        <div class="row">
+            <div class="col-12">[Label_BradenFriction]</div>
+            <div class="col-4 mb-2">[Control_BradenFriction]</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-2 mb-2 float-right">[Label_FinalResult]</div>
+            <div class="col-sm-10 col-md-8 mb-2">[Control_FinalResult]</div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-12">
+                [Control_AssessmentNarrative]
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-6">
+                <div class="float-left">
+                    <input type="button" id="btnAssessmentDelete" class="btn btn-danger btn-xs" value="Delete" />
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="float-right">
+                    <input type="button" id="btnAssessmentEdit" class="btn btn-primary btn-xs d-none" value="Edit" />
+                    <input type="button" id="btnAssessmentComplete" class="btn btn-primary btn-xs" value="Complete" />
+                    <input type="button" id="btnAssessmentDone" class="btn btn-success btn-xs d-none" value="Done" />
+                    [Control_AssessmentComplete]
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-12">Copyright Barbara Braden and Nancy Bergstrom, 1988 All rights reserved.</div>
+        </div>
+        
+        <script>
+            $(document).ready(function () {
+                var inUse = $("#AreaInUse").val();
+        
+                if ($("#ichdn_ForCurrentEncounter").val() == "0") {
+                    $("#btnAssessmentComplete").addClass("d-none");
+                    $("#btnAssessmentDelete").addClass("d-none");
+                    $("#btnAssessmentEdit").addClass("d-none");
+                } else if ($('#EncounterAssessmentForm  #ichdn_Complete').val().toLowerCase() == 'true') {
+                    $('#btnAssessmentComplete').addClass('d-none');
+                    $('#btnAssessmentDelete').addClass('d-none');
+                    if (IsNullOrEmpty(encounterLocked) && $("#ichdn_ForCurrentEncounter").val() == "1") {
+                        $('#btnAssessmentEdit').removeClass('d-none');
+                    }
+                    $('#btnAssessmentDone').removeClass('d-none');
+                    disableContent("#EncounterAssessmentForm", ["#btnAssessmentDone", "#btnAssessmentEdit", "#btnAssessmentComplete", "#btnAssessmentDelete"]);
+                }
+        
+                if (inUse == "True" || chartAuditor == "True") {
+                    $("#btnAssessmentComplete").addClass("d-none");
+                    $("#btnAssessmentDelete").addClass("d-none");
+                    $("#btnAssessmentEdit").addClass("d-none");
+                    disableContent("#EncounterAssessmentForm", ["#btnAssessmentDone", "#btnAssessmentEdit", "#btnAssessmentComplete", "#btnAssessmentDelete"]);
+                }
+        
+                $("#btnAssessmentEdit").on("click", function () {
+                    $("#btnAssessmentComplete").removeClass("d-none");
+                    $("#btnAssessmentDelete").removeClass("d-none");
+                    $("#btnAssessmentEdit").addClass("d-none");
+                    $("#btnAssessmentDone").addClass("d-none");
+                    $("#ichdn_Complete").val("false");
+                    $("#ichdn_AssessmentLocked").val("0");
+                    $("#icfe_FinalResult_TextBox").val("");
+                    $("#icfe_AssessmentComplete_Hidden").val(0);
+                    $('#EncounterAssessmentForm  #ichdn_FinalResult').val('');
+                    $(".selectedAssessment a.assessmentLink").text("Partial");
+                    enableContent("#EncounterAssessmentForm");
+                });
+        
+                $("#btnAssessmentDelete").on('click', function () {
+                    deleteAssessmentConfirmation();
+                });
+        
+                $("#btnAssessmentDone").on('click', function () {
+                    ReturnToAssessmentList();
+                });
+                
+                $("[id^='icfe_']").on('change', function () {
+                    updateAssessmentNarrative()
+                });
+        
+                $("#btnAssessmentComplete").on("click", function () {
+                    setButtonState('btnAssessmentComplete', '...Processing...', true);
+                    var assessmentResult = calculate_Result();
+                    finalScore = assessmentResult["resultScore"];
+                    finalResult = assessmentResult["result"];
+        
+                    if (finalScore != -100) {
+                        $("#icfe_FinalResult_CalculatedField").html(finalResult);
+                        $("#icfe_AssessmentComplete_Hidden").val(1);
+                        $('#EncounterAssessmentForm  #ichdn_Complete').val('true');
+                        $('#EncounterAssessmentForm  #ichdn_FinalResult').val(finalResult);
+                        saveResults();
+        
+                    } else {
+                        setButtonState('btnAssessmentComplete', 'Complete', false);
+                    }
+                });
+            });
+        
+            function saveResults() {
+                $.when(saveChartAssessmentsForm())
+                    .done(function () {
+                        setButtonState('btnAssessmentComplete', 'Complete', false);
+                        $("#ichdn_AssessmentLocked").val("1");
+                        $('#btnAssessmentComplete').addClass('d-none');
+                        $('#btnAssessmentDelete').addClass('d-none');
+                        $('#btnAssessmentEdit').removeClass('d-none');
+                        $('#btnAssessmentDone').removeClass('d-none');
+                        $(".selectedAssessment a.assessmentLink").text(finalResult);
+                        disableContent("#EncounterAssessmentForm", ["#btnAssessmentDone", "#btnAssessmentEdit", "#btnAssessmentComplete", "#btnAssessmentDelete"]);
+                    })
+                    .fail(function () {
+                        $("#ichdn_Complete").val("False");
+                        $('#btnAssessmentComplete').addClass('d-none');
+                        $('#btnAssessmentDelete').addClass('d-none');
+                        $('#btnAssessmentEdit').removeClass('d-none');
+                        $('#btnAssessmentDone').removeClass('d-none');
+                    });
+            }
+            function calculate_Result() {
+                var BradenSensPercep = parseInt(document.getElementById("icfe_BradenSensPercep_DropDownList").value);
+                var BradenMoisture = parseInt(document.getElementById("icfe_BradenMoisture_DropDownList").value);
+                var BradenActivity = parseInt(document.getElementById("icfe_BradenActivity_DropDownList").value);
+                var BradenMobility = parseInt(document.getElementById("icfe_BradenMobility_DropDownList").value);
+                var BradenNutrition = parseInt(document.getElementById("icfe_BradenNutrition_DropDownList").value);
+                var BradenFriction = parseInt(document.getElementById("icfe_BradenFriction_DropDownList").value);
+        
+        
+                var trackingScore = 0;
+        
+                if (isNaN(BradenSensPercep)) { BradenSensPercep = 0; } else { trackingScore += 1; }
+                if (isNaN(BradenMoisture)) { BradenMoisture = 0; } else { trackingScore += 1; }
+                if (isNaN(BradenActivity)) { BradenActivity = 0; } else { trackingScore += 1; }
+                if (isNaN(BradenMobility)) { BradenMobility = 0; } else { trackingScore += 1; }
+                if (isNaN(BradenNutrition)) { BradenNutrition = 0; } else { trackingScore += 1; }
+                if (isNaN(BradenFriction)) { BradenFriction = 0; } else { trackingScore += 1; }
+        
+                if (trackingScore == 6) {
+                    var finalScoreResult = BradenSensPercep + BradenMoisture + BradenActivity + BradenMobility + BradenNutrition + BradenFriction;
+                    var finalResult = "";
+                    if (finalScoreResult >= 19) {
+                        finalResult = "No Risk";
+                    } else if (finalScoreResult >= 15) {
+                        finalResult = "Mild Risk";
+                    } else if (finalScoreResult >= 13) {
+                        finalResult = "Medium Risk";
+                    } else if (finalScoreResult >= 10) {
+                        finalResult = "High Risk";
+                    } else {
+                        finalResult = "Very High Risk";
+                    }
+        
+        
+                    return { result: finalResult, resultScore: finalScoreResult };
+                } else {
+                    alert("Please answer all questions to calculate a score.")
+                    return { result: "incomplete", resultScore: -100 };
+                }
+            }
+        </script>
+       </div>
+    </main>
+    <footer class="footer mt-auto py-3 bg-light sticky-footer">
+        <div class="container-fluid text-center">
+            <span class="text-muted">Place sticky footer content here.</span>
+        </div>
+    </footer>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
