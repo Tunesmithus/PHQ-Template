@@ -53,86 +53,7 @@
            </div>
            
 
-           <div class="row collapse" id="assessmentInstructions">
-            <div class="col">
-                <hr>
-                <h2 class="mb-3 text-center" style="color: black;" >Instructions</h2>
-                <h5 style="color: black;">For Initial Diagnosis </h5>
-                <ol>
-                    <li>Patient Completes PHQ-9 Quick Depression Assessment </li>
-                    <li>If there are at least 4 3s in the shaded section (including Questions #1 and #2), consider a depressive
-                        disorder. Add score to determine severity</li>
-                </ol>
            
-                <h5 style="color: black;"  ><em>Consider Major Depressive Disorder</em></h5>
-                <p>- if there are at least 5 3s in the shaded section (one of which corresponds to Question #1 or #2)</p>
-              
-                <h5 style="color: black;" ><em>Consider Other Depressive Disorder</em></h5>
-                <p>- if there are at least 5 3s in the shaded section (one of which corresponds to Question #1 or #2)</p>
-              
-                <p><strong>Note:</strong> Since the questionnaire relies on patient self-report, all responses should be verified by the clinician, and a definitive diagnosis is made on clinical grounds taking into account how well the patient understoodthe questionnaire, as well as other relevant information from the patient. Diagnoses of Major Depressive Disorder or Other Depressive Disorder also require impairment of social, occupational, or other important areas of functioning (Question #10) and ruling out normal bereavement, a history of a Manic Episode (Bipolar Disorder), and a physical disorder, medication, or other drug as the biological cause of the depressive symptoms.</p>
-           
-                <h5 style="color: black;">To monitor severity over time for newly diagnosed patients or patients in current treatment for
-                    depression:</h5>
-                    <ol>
-                        <li>
-                            Patients may complete questionnaires at baseline and at regular intervals (eg, every 2 weeks) at home and bring them in at their next appointment for scoring or they may complete the questionnaire during each scheduled appointment.
-                        </li>
-                        <li>
-                            Add up 3s by column. For every 3: Several days = 1 More than half the days = 2 Nearly every day = 3
-                        </li>
-                        <li>
-                            Add together column scores to get a TOTAL score.
-                        </li>
-                        <li>
-                            Refer to the accompanying <strong>PHQ-9 Scoring Box</strong> to interpret the TOTAL score
-                        </li>
-                        <li>
-                            Results may be included in patient files to assist you in setting up a treatment goal, determining degree of response, as well as guiding treatment intervention.
-                        </li>
-                       
-                    </ol>
-                    
-                    <h5 style="color: black;" >Scoring: add up all checked boxes on PHQ-9</h5>
-                    <p><strong>For every:</strong> Not at all = 0; Several days = 1;
-                        More than half the days = 2; Nearly every day = 3</p>
-                        <br>
-                        <h5 style="color: black;" >Interpretation of Total Score</h5>
-                        
-                        <table style="width:40%" class="table table-bordered table-sm ">
-                            <thead class="text-center bg-light">
-                                <tr>
-                                    <th class="col-6">Total Score</th>
-                                    <th class="col-6">Depression</th>
-                                    
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr >
-                                    <td>1-4</td>
-                                    <td>Minimal Depression</td>
-                                </tr>
-                                <tr>
-                                    <td>5-9</td>
-                                    <td>Mild depression</td>
-                                </tr>
-                                <tr>
-                                    <td >10-14</td>
-                                    <td >Moderate depression</td>
-                                </tr>
-                                <tr>
-                                    <td  >15-19</td>
-                                    <td >Moderately severe depression</td>
-                                </tr>
-                                <tr>
-                                    <td >20-27</td>
-                                    <td >Severe depression</td>
-                                </tr>
-                            
-                            </tbody>
-                        </table>
-            </div>
-           </div>
         
            <hr>
            <div class="row"> 
@@ -238,39 +159,91 @@
 
 <script>
 
-
     $(document).ready(function(){
 
-        $("#btnAssessmentEdit").click(function(){
-           $("#btnAssessmentComplete").removeClass("d-none");
-           $("#btnAssessmentDelete").removeClass("d-none");
-           $("#btnAssessmentEdit").addClass("d-none");
-           $("#ichdn_Complete").val("false");
-           $("#ichdn_AssessmentLocked").val("0");
-          
-        });
+        var inUse = $("AreaInUse").val();
 
-        $("#btnAssessmentDelete").click(function(){
-            //is this a global function
-            deleteAssessmentConfirmation();
-        });
+            if ($("#ichdn_ForCurrentEncounter").val()==0) {
+                $("#btnAssessmentComplete").addClass("d-none");
+                $("#btnAssessmentDelete").addClass("d-none");
+                $("#btnAssessmentEdit").addClass("d-none");
+            }else if ($("#EncounterAssessmentForm  #ichdn_Complete").val().toLowerCase() == 'true') {
+                $("#btnAssessmentComplete").addClass('d-none');
+                $("#btnAssessmentDelete").addClass('d-none');
 
-        $("[id^='icfe_']").on('change', function(){
-            //is this a global function
-            updateAssessmentNarrative();
-        });
+                if (IsNullOrEmpty(encounterLocked) && $("#ichdn_ForCurrentEncounter").val() == "1") {
+                    $('#btnAssessmentEdit').removeClass('d-none');
+                }
+                disableContent("#EncounterAssessmentForm", ["#btnAssessmentEdit", "#btnAssessmentComplete", "#btnAssessmentDelete"])
+            }
 
-        $("#btnAssessmentComplete").click(function(){
-            setButtonState('btnAssessmentComplete', '...Processing...', true);
-            var assessmentResult = calculateResults();
+            if(inUse == "True" || chartAuditor == "True"){
+                $("#btnAssessmentComplete").addClass("d-none");
+                $("#btnAssessmentDelete").addClass("d-none");
+                $("#btnAssessmentEdit").addClass("d-none");
+                disableContent("#EncounterAssessmentForm",[ "#btnAssessmentEdit", "#btnAssessmentComplete", "#btnAssessmentDelete"] )
+            }
 
-            if (condition) {
+            $("#btnAssessmentEdit").click(function(){
+                $("#btnAssessmentComplete").removeClass("d-none");
+                $("#btnAssessmentDelete").removeClass("d-none");
+                $("#btnAssessmentEdit").addClass("d-none");
+                $("#ichdn_Complete").val("false");
+                $("#ichdn_AssessmentLocked").val("0");
+                $("#icfe_FinalResult_TextBox").val("");
+                $("#icfe_AssessmentComplete_Hidden").val(0);
+                $('#EncounterAssessmentForm  #ichdn_FinalResult').val('');
+                $(".selectedAssessment a.assessmentLink").text("Partial");
+                enableContent("#EncounterAssessmentForm");
+            });
+
+        
+
+            $("#btnAssessmentDelete").click(function(){
+                deleteAssessmentConfirmation();
+            });
+
+            $("[id^='icfe_']").on('change', function(){
+                updateAssessmentNarrative();
+            });
+
+            $("#btnAssessmentComplete").click(function(){
+                setButtonState('btnAssessmentComplete', '...Processing...', true);
+                var assessmentResult = calculateResults();
+                var finalScore = assessmentResult["resultScore"];
+                var finalResult = assessmentResult["result"];
+
+                if (finalScore != -100) {
+                    $("#icfe_FinalResult_CalculatedField").html(finalResult);
+                    $("#icfe_AssessmentComplete_Hidden").val(1);
+                    $('#EncounterAssessmentForm  #ichdn_Complete').val('true');
+                    $('#EncounterAssessmentForm  #ichdn_FinalResult').val(finalResult);
+                    saveResults();
+                }
+                else{
+                    setButtonState('btnAssessmentComplete', 'Complete', false);
+                }
+            });
+
+            function saveResults(){
+            $.when(saveChartAssessmentsForm()).done(function(){
+                setButtonState("btnAssessmentComplete", "Complete", false);
+                $("#ichdn_AssessmentLocked").val("1");
+                $('#btnAssessmentComplete').addClass('d-none');
+                $('#btnAssessmentDelete').addClass('d-none');
+                $('#btnAssessmentEdit').removeClass('d-none');
+                $(".selectedAssessment a.assessmentLink").text(finalResult);
+                disableContent("#EncounterAssessmentForm", ["#btnAssessmentEdit", "#btnAssessmentComplete", "#btnAssessmentDelete"]);
+            })
+            .fail(function(){
+                $("#ichdn_Complete").val("False");
+                $('#btnAssessmentComplete').addClass('d-none');
+                $('#btnAssessmentDelete').addClass('d-none');
+                $('#btnAssessmentEdit').removeClass('d-none');
                 
-            }
-            else{
-                setButtonState('btnAssessmentComplete')
-            }
-        });
+            })
+        }
+
 
     });
 
@@ -285,7 +258,7 @@
     var PHQ9Q7 = parseInt(document.querySelector("#icfe_PHQ9-Q7_DropDownList").value);
     var PHQ9Q8 = parseInt(document.querySelector("#icfe_PHQ9-Q8_DropDownList").value);
     var PHQ9Q9 = parseInt(document.querySelector("#icfe_PHQ9-Q9_DropDownList").value);
-    var PHQ9Q10 = parseInt(document.querySelector("#icfe_PHQ9-Q10_DropDownList").value);
+    var PHQ9Q10 = document.querySelector("#icfe_PHQ9-Q10_DropDownList");
 
     var trackingScore = 0;
 
@@ -299,32 +272,43 @@
     if (isNaN(PHQ9Q8)) {PHQ9Q8 = 0} else {trackingScore += 1}
     if (isNaN(PHQ9Q9)) {PHQ9Q9 = 0} else {trackingScore += 1}
 
-    if(trackingScore){
-        var finalScoreResult = "";
-        var finalScore = PHQ9Q1 + PHQ9Q2 + PHQ9Q3 + PHQ9Q4 + PHQ9Q5 + PHQ9Q6 + PHQ9Q7 + PHQ9Q8 + PHQ9Q9
-        if (finalscore >= 1 && finalScore <= 4) {
-            finalScoreResult ="Minimal Depression";
+
+    var finalResult = "";
+    var finalScoreResult = PHQ9Q1 + PHQ9Q2 + PHQ9Q3 + PHQ9Q4 + PHQ9Q5 + PHQ9Q6 + PHQ9Q7 + PHQ9Q8 + PHQ9Q9;
+
+    if(trackingScore == 9 && PHQ9Q10.selectedIndex > 0){
+        
+        if (finalScoreResult >= 1 && finalScoreResult <= 4) {
+            finalResult ="Minimal Depression";
         }
-        else if (finalScore >= 5 && finalScore <= 9 ) {
-            finalScoreResult ="Mild Depression";
+        else if (finalScoreResult >= 5 && finalScoreResult <= 9 ) {
+            finalResult ="Mild Depression";
         }
-        else if (finalScore >= 10 && finalScore <= 14 ) {
-            finalScoreResult ="Moderate Depression";
+        else if (finalScoreResult >= 10 && finalScoreResult <= 14 ) {
+            finalResult ="Moderate Depression";
         }
-        else if (finalScore >= 15 && finalScore <= 19 ) {
-            finalScoreResult ="Moderately Severe Depression";
+        else if (finalScoreResult >= 15 && finalScoreResult <= 19 ) {
+            finalResult ="Moderately Severe Depression";
         }
         else {
-            finalScoreResult ="Severe Depression";
+            finalResult ="Severe Depression";
         }
+        return { result: finalResult, resultScore: finalScoreResult };
     }
+
+    else if (trackingScore == 9 && finalScoreResult == 0) {
+        return { result: finalResult, resultScore: finalScoreResult };
+    } 
+
     else{
-        alert("Please answer all questions")
+        alert("Please answer all questions to calculate a score");
+        return { result: "incomplete", resultScore: -100 };
+        
 
     }
 
 
-    }
+}
       
 
 

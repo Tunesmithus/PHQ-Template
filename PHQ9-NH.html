@@ -33,101 +33,47 @@
        <div class="container">
         <div class="row">
             <div class="col">
-                <h1 class="text-primary">Patient Health Questionaire</h1>
+                <h1 class="text-primary">PHQ9 Nursing Home</h1>
             </div>
-            <div class="col">
-                <button class="btn btn-primary float-end" type="button" data-bs-toggle="collapse" data-bs-target="#assessmentInstructions" >Instructions</button>
-            </div>
+           
         </div>
         <div class="row">
             <div class="col">
-                <p class="lead"><strong>Over the last 2 weeks, how often have you been bothered by any of the following problems? </strong><em>(Select the answer to the right of each choice.)</em></p>
+                <p class="lead"><strong>If PHQ9 (Patient Health Questionaire) has been done in the last 2 weeks </strong><em>(14 days)</em></p>
             </div>
         </div>
            
-           
-           <div class="row collapse" id="assessmentInstructions">
-            <div class="col">
-                <hr>
-                <h2 class="mb-3 text-center" style="color: black;" >Instructions</h2>
-                <h5 style="color: black;">For Initial Diagnosis </h5>
-                <ol>
-                    <li>Patient Completes PHQ-9 Quick Depression Assessment </li>
-                    <li>If there are at least 4 3s in the shaded section (including Questions #1 and #2), consider a depressive
-                        disorder. Add score to determine severity</li>
-                </ol>
-           
-                <h5 style="color: black;"  ><em>Consider Major Depressive Disorder</em></h5>
-                <p>- if there are at least 5 3s in the shaded section (one of which corresponds to Question #1 or #2)</p>
-              
-                <h5 style="color: black;" ><em>Consider Other Depressive Disorder</em></h5>
-                <p>- if there are at least 5 3s in the shaded section (one of which corresponds to Question #1 or #2)</p>
-              
-                <p><strong>Note:</strong> Since the questionnaire relies on patient self-report, all responses should be verified by the clinician, and a definitive diagnosis is made on clinical grounds taking into account how well the patient understoodthe questionnaire, as well as other relevant information from the patient. Diagnoses of Major Depressive Disorder or Other Depressive Disorder also require impairment of social, occupational, or other important areas of functioning (Question #10) and ruling out normal bereavement, a history of a Manic Episode (Bipolar Disorder), and a physical disorder, medication, or other drug as the biological cause of the depressive symptoms.</p>
-           
-                <h5 style="color: black;">To monitor severity over time for newly diagnosed patients or patients in current treatment for
-                    depression:</h5>
-                    <ol>
-                        <li>
-                            Patients may complete questionnaires at baseline and at regular intervals (eg, every 2 weeks) at home and bring them in at their next appointment for scoring or they may complete the questionnaire during each scheduled appointment.
-                        </li>
-                        <li>
-                            Add up 3s by column. For every 3: Several days = 1 More than half the days = 2 Nearly every day = 3
-                        </li>
-                        <li>
-                            Add together column scores to get a TOTAL score.
-                        </li>
-                        <li>
-                            Refer to the accompanying <strong>PHQ-9 Scoring Box</strong> to interpret the TOTAL score
-                        </li>
-                        <li>
-                            Results may be included in patient files to assist you in setting up a treatment goal, determining degree of response, as well as guiding treatment intervention.
-                        </li>
-                       
-                    </ol>
-                    
-                    <h5 style="color: black;" >Scoring: add up all checked boxes on PHQ-9</h5>
-                    <p><strong>For every:</strong> Not at all = 0; Several days = 1;
-                        More than half the days = 2; Nearly every day = 3</p>
-                        <br>
-                        <h5 style="color: black;" >Interpretation of Total Score</h5>
-                        
-                        <table style="width:40%" class="table table-bordered table-sm ">
-                            <thead class="text-center bg-light">
-                                <tr>
-                                    <th class="col-6">Total Score</th>
-                                    <th class="col-6">Depression</th>
-                                    
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr >
-                                    <td class="text-center">1-4</td>
-                                    <td>Minimal Depression</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">5-9</td>
-                                    <td>Mild depression</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center" >10-14</td>
-                                    <td >Moderate depression</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center" >15-19</td>
-                                    <td >Moderately severe depression</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center" >20-27</td>
-                                    <td >Severe depression</td>
-                                </tr>
-                            
-                            </tbody>
-                        </table>
-            </div>
-           </div>
            <hr>
            <div class="row mb-3"> 
+            <div class="col-6">
+                <label for="" class="form-label">Has Assessment been taken within the last 14 days?</label>
+            </div>
+            <div class="col-6">
+                <select name="" id="icfe_AssessmentLastTwoWeeks_DropDownList" class="form-select">
+                    <option disable selected></option>
+                    <option value = "1">Yes</option>
+                    <option value = "2">No</option>
+                </select>
+            </div>
+        </div>
+           <div class="row mb-3"> 
+                <div class="col-6">
+                    <label for="" class="form-label">What was of the score of the last assessment within 14 days?</label>
+                </div>
+                <div class="col-6">
+                    <input type="text" id="icfe_LastScoreOFPHQ9_TextBox" class="form-control">
+                </div>
+           </div>
+           <div class="row mb-3"> 
+                <div class="col-6">
+                    <label for="" class="form-label">What was the date of the last assessment within 14 days?</label>
+                </div>
+                <div class="col-6">
+                    <input type="date" id="icfe_LastDateOfPHQ9_TextBox" class="form-control">
+                </div>
+            </div>
+            <hr>
+            <div class="row mb-3"> 
                 <div class="col-6">
                     <label for="" class="form-label">1.Little interest or pleasure in doing things</label>
                 </div>
@@ -289,13 +235,12 @@
                 </div>
                 
             </div>
-            <hr>
+            <hr size="4px">
             <div class="row">
                 <div class="col">
                     <button class="btn btn-danger" id="btnAssessmentDelete">Delete</button>
                     <button class="btn btn-success float-end" id="btnAssessmentComplete">Complete</button>
                     <button class="btn btn-primary mx-2 float-end" id="btnAssessmentEdit">Edit</button>
-                    <button class="btn btn-primary mx-2 float-end" id="btnAssessmentCheck">Check</button>
                 </div>
             </div>
         
@@ -321,6 +266,14 @@
 
 
         $(document).ready(function(){
+
+            disableAllQuestions();
+            
+            $("#icfe_AssessmentLastTwoWeeks_DropDownList").on("change", function(){
+
+            disablePHQ9Questions();
+
+            });
 
             // var inUse = $("AreaInUse").val();
 
@@ -388,21 +341,54 @@
             //     }
             // });
 
-            $("#btnAssessmentCheck").click(function(){
-                var screeningResults = calculateResults();
-                if (screeningResults == undefined) {
-                    document.getElementById("result").innerHTML = null;
+            $("#btnAssessmentComplete").click(function(){
+
+                if($("#icfe_AssessmentLastTwoWeeks_DropDownList").val() == "1"){
+
+                    
+                    var previousResults = previousAssessmentValues();
+                    if(previousResults == undefined){
+                        document.getElementById("result").innerHTML = null;
+                    }
+                    else{
+                        document.getElementById("result").innerHTML = previousResults
+                        $("#icfe_LastScoreOFPHQ9_TextBox").attr("disabled", true);
+                        $("#icfe_LastDateOfPHQ9_TextBox").attr("disabled", true);
+                    }
+
+                    
+                }
+                else if($("#icfe_AssessmentLastTwoWeeks_DropDownList").val() == "2"){
+                    
+                    var screeningResults = calculateResults();
+
+                    if (screeningResults == undefined) {
+                        document.getElementById("result").innerHTML = null;
+
+                    }
+                    else{
+                        document.getElementById("result").innerHTML = screeningResults;
+                    } 
+                }
+
+            });
+
+
+            $("#btnAssessmentEdit").click(function(){
+                if($("#icfe_LastScoreOFPHQ9_TextBox").val() != "" && $("#icfe_LastDateOfPHQ9_TextBox").val() != ""){
+                    $("#icfe_LastScoreOFPHQ9_TextBox").attr("disabled", false);
+                    $("#icfe_LastDateOfPHQ9_TextBox").attr("disabled", false);
                 }
                 else{
-                    document.getElementById("result").innerHTML = screeningResults;
+
                 }
                 
-                
+
             });
 
         });
 
-        function saveResults(){
+        /* function saveResults(){
             $.when(saveChartAssessmentsForm()).done(function(){
                 setButtonState("btnAssessmentComplete", "Complete", false);
                 $("#ichdn_AssessmentLocked").val("1");
@@ -419,6 +405,28 @@
                 $('#btnAssessmentEdit').removeClass('d-none');
                 
             })
+        } */
+
+
+        function previousAssessmentValues(){
+
+            var lastPHQ9Score = $("#icfe_LastScoreOFPHQ9_TextBox").val();
+            var lastPHQ9Date = $("#icfe_LastDateOfPHQ9_TextBox").val();
+
+            
+            if (lastPHQ9Date != "" && lastPHQ9Score != "") {
+                
+                return lastPHQ9Score
+                
+            }
+            else{
+
+                return alert("Please answer previous assessment questions")
+
+            }
+
+          
+
         }
 
         function calculateResults(){
@@ -472,19 +480,62 @@
                 } 
                 return `${finalResult}: Score: ${finalScoreResult}`
             }
-
-            /* else if (trackingScore == 9 && finalScoreResult == 0) {
-                 console.log("no depression section")
-                 finalResult = "No Depression";
-                 return `${finalResult}: Score ${finalScoreResult}`;
-             }   */
             
             else{
                 return alert("Please answer all questions to calculate a score");
                 
-
             }
 
+
+        }
+
+        function disablePHQ9Questions(){
+            if($("#icfe_AssessmentLastTwoWeeks_DropDownList").val() == "1"){
+            $("#icfe_PHQ9-Q1_DropDownList").attr("disabled", true);
+            $("#icfe_PHQ9-Q2_DropDownList").attr("disabled", true);
+            $("#icfe_PHQ9-Q3_DropDownList").attr("disabled", true);
+            $("#icfe_PHQ9-Q4_DropDownList").attr("disabled", true);
+            $("#icfe_PHQ9-Q5_DropDownList").attr("disabled", true);
+            $("#icfe_PHQ9-Q6_DropDownList").attr("disabled", true);
+            $("#icfe_PHQ9-Q7_DropDownList").attr("disabled", true);
+            $("#icfe_PHQ9-Q8_DropDownList").attr("disabled", true);
+            $("#icfe_PHQ9-Q9_DropDownList").attr("disabled", true);
+            $("#icfe_PHQ9-Q10_DropDownList").attr("disabled", true);
+            $("#icfe_LastDateOfPHQ9_TextBox").attr("disabled", false);
+            $("#icfe_LastScoreOFPHQ9_TextBox").attr("disabled", false);
+            }
+            else{
+            $("#icfe_PHQ9-Q1_DropDownList").attr("disabled", false);
+            $("#icfe_PHQ9-Q2_DropDownList").attr("disabled", false);
+            $("#icfe_PHQ9-Q3_DropDownList").attr("disabled", false);
+            $("#icfe_PHQ9-Q4_DropDownList").attr("disabled",false );
+            $("#icfe_PHQ9-Q5_DropDownList").attr("disabled", false);
+            $("#icfe_PHQ9-Q6_DropDownList").attr("disabled",false );
+            $("#icfe_PHQ9-Q7_DropDownList").attr("disabled", false);
+            $("#icfe_PHQ9-Q8_DropDownList").attr("disabled", false);
+            $("#icfe_PHQ9-Q9_DropDownList").attr("disabled", false);
+            $("#icfe_PHQ9-Q10_DropDownList").attr("disabled", false);
+            $("#icfe_LastDateOfPHQ9_TextBox").attr("disabled", true);
+            $("#icfe_LastScoreOFPHQ9_TextBox").attr("disabled", true);
+            
+        }
+
+        }
+
+        function disableAllQuestions(){
+
+            $("#icfe_PHQ9-Q1_DropDownList").attr("disabled", true);
+            $("#icfe_PHQ9-Q2_DropDownList").attr("disabled", true);
+            $("#icfe_PHQ9-Q3_DropDownList").attr("disabled", true);
+            $("#icfe_PHQ9-Q4_DropDownList").attr("disabled", true);
+            $("#icfe_PHQ9-Q5_DropDownList").attr("disabled", true);
+            $("#icfe_PHQ9-Q6_DropDownList").attr("disabled", true);
+            $("#icfe_PHQ9-Q7_DropDownList").attr("disabled", true);
+            $("#icfe_PHQ9-Q8_DropDownList").attr("disabled", true);
+            $("#icfe_PHQ9-Q9_DropDownList").attr("disabled", true);
+            $("#icfe_PHQ9-Q10_DropDownList").attr("disabled", true);
+            $("#icfe_LastDateOfPHQ9_TextBox").attr("disabled", true);
+            $("#icfe_LastScoreOFPHQ9_TextBox").attr("disabled", true);
 
         }
 

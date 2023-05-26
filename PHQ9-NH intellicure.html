@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+    <title>Patient Heatlth Questionaire</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+   <!-- Convert this to an external style sheet -->
+   <style>
+       main>.container {
+           padding: 60px 15px 0;
+           margin-bottom: 5rem;
+       }
+       .sticky-footer {
+           position: sticky;
+           left: 0;
+           bottom: 0;
+           width: 100%;
+       }
+   </style>
+</head>
+
+<body class="d-flex flex-column h-100">
+
+    <main class="flex-shrink-0">
+
+       <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-primary">PHQ9 Nursing Home</h1>
+            </div>
+           
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="lead"><strong>If PHQ9 (Patient Health Questionaire) has been done in the last 2 weeks </strong><em>(14 days)</em></p>
+            </div>
+        </div>
+           
+           <hr>
+           <div class="row mb-3"> 
+                <div class="col-6">
+                    <label for="" class="form-label">1. What was of the score of the last assessment within 14 days?</label>
+                </div>
+                <div class="col-6">
+                    <input type="text" class="form-control">
+                </div>
+           </div>
+           <div class="row mb-3"> 
+                <div class="col-6">
+                    <label for="" class="form-label">2. What was the date of the last assessment within 14 days?</label>
+                </div>
+                <div class="col-6">
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+            <hr size="4px">
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-danger" id="btnAssessmentDelete">Delete</button>
+                    <button class="btn btn-success float-end" id="btnAssessmentComplete">Complete</button>
+                    <button class="btn btn-primary mx-2 float-end" id="btnAssessmentEdit">Edit</button>
+                </div>
+            </div>
+            
+       </div>
+       </div>
+       
+
+    </main>
+    <footer class="footer mt-auto py-3 bg-light sticky-footer">
+        <div class="container-fluid text-center">
+            <span class="text-muted"> &copy; Developed by Drs. Robert L. Spitzer, Janet B.W. Williams, Kurt Kroenke and colleagues, with an educational grant from 
+             Pfizer Inc.</span>
+        </div>
+    </footer>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+    </script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script>
+
+
+        $(document).ready(function(){
+
+            // var inUse = $("AreaInUse").val();
+
+            // if ($("#ichdn_ForCurrentEncounter").val()==0) {
+            //     $("#btnAssessmentComplete").addClass("d-none");
+            //     $("#btnAssessmentDelete").addClass("d-none");
+            //     $("#btnAssessmentEdit").addClass("d-none");
+            // }else if ($("#EncounterAssessmentForm  #ichdn_Complete").val().toLowerCase() == 'true') {
+            //     $("#btnAssessmentComplete").addClass('d-none');
+            //     $("#btnAssessmentDelete").addClass('d-none');
+
+            //     if (IsNullOrEmpty(encounterLocked) && $("#ichdn_ForCurrentEncounter").val() == "1") {
+            //         $('#btnAssessmentEdit').removeClass('d-none');
+            //     }
+            //     disableContent("#EncounterAssessmentForm", ["#btnAssessmentEdit", "#btnAssessmentComplete", "#btnAssessmentDelete"])
+            // }
+
+            // if(inUse == "True" || chartAuditor == "True"){
+            //     $("#btnAssessmentComplete").addClass("d-none");
+            //     $("#btnAssessmentDelete").addClass("d-none");
+            //     $("#btnAssessmentEdit").addClass("d-none");
+            //     disableContent("#EncounterAssessmentForm",[ "#btnAssessmentEdit", "#btnAssessmentComplete", "#btnAssessmentDelete"] )
+            // }
+
+            // $("#btnAssessmentEdit").click(function(){
+            //     $("#btnAssessmentComplete").removeClass("d-none");
+            //     $("#btnAssessmentDelete").removeClass("d-none");
+            //     $("#btnAssessmentEdit").addClass("d-none");
+            //     $("#ichdn_Complete").val("false");
+            //     $("#ichdn_AssessmentLocked").val("0");
+            //     $("#icfe_FinalResult_TextBox").val("");
+            //     $("#icfe_AssessmentComplete_Hidden").val(0);
+            //     $('#EncounterAssessmentForm  #ichdn_FinalResult').val('');
+            //     $(".selectedAssessment a.assessmentLink").text("Partial");
+            //     enableContent("#EncounterAssessmentForm");
+            // });
+
+        
+
+            // $("#btnAssessmentDelete").click(function(){
+                
+            //     deleteAssessmentConfirmation();
+            // });
+
+            // $("[id^='icfe_']").on('change', function(){
+            //     updateAssessmentNarrative();
+            // });
+
+            // $("#btnAssessmentComplete").click(function(){
+            //     setButtonState('btnAssessmentComplete', '...Processing...', true);
+            //     var assessmentResult = calculateResults();
+            //     var finalScore = assessmentResult["resultScore"];
+            //     var finalResult = assessmentResult["result"];
+
+
+            //     if (finalScore != -100) {
+            //         $("#icfe_FinalResult_CalculatedField").html(finalResult);
+            //         $("#icfe_AssessmentComplete_Hidden").val(1);
+            //         $('#EncounterAssessmentForm  #ichdn_Complete').val('true');
+            //         $('#EncounterAssessmentForm  #ichdn_FinalResult').val(finalResult);
+            //         saveResults();
+            //     }
+            //     else{
+            //         setButtonState('btnAssessmentComplete', 'Complete', false);
+            //     }
+            // });
+
+            $("#btnAssessmentCheck").click(function(){
+                var screeningResults = calculateResults();
+                if (screeningResults == undefined) {
+                    document.getElementById("result").innerHTML = null;
+                }
+                else{
+                    document.getElementById("result").innerHTML = screeningResults;
+                }
+                
+                
+            });
+
+        });
+
+        function saveResults(){
+            $.when(saveChartAssessmentsForm()).done(function(){
+                setButtonState("btnAssessmentComplete", "Complete", false);
+                $("#ichdn_AssessmentLocked").val("1");
+                $('#btnAssessmentComplete').addClass('d-none');
+                $('#btnAssessmentDelete').addClass('d-none');
+                $('#btnAssessmentEdit').removeClass('d-none');
+                $(".selectedAssessment a.assessmentLink").text(finalResult);
+                disableContent("#EncounterAssessmentForm", ["#btnAssessmentEdit", "#btnAssessmentComplete", "#btnAssessmentDelete"]);
+            })
+            .fail(function(){
+                $("#ichdn_Complete").val("False");
+                $('#btnAssessmentComplete').addClass('d-none');
+                $('#btnAssessmentDelete').addClass('d-none');
+                $('#btnAssessmentEdit').removeClass('d-none');
+                
+            })
+        }
+
+        function calculateResults(){
+
+            var PHQ9Q1 = parseInt(document.querySelector("#icfe_PHQ9-Q1_DropDownList").value);
+            var PHQ9Q2 = parseInt(document.querySelector("#icfe_PHQ9-Q2_DropDownList").value);
+            var PHQ9Q3 = parseInt(document.querySelector("#icfe_PHQ9-Q3_DropDownList").value);
+            var PHQ9Q4 = parseInt(document.querySelector("#icfe_PHQ9-Q4_DropDownList").value);
+            var PHQ9Q5 = parseInt(document.querySelector("#icfe_PHQ9-Q5_DropDownList").value);
+            var PHQ9Q6 = parseInt(document.querySelector("#icfe_PHQ9-Q6_DropDownList").value);
+            var PHQ9Q7 = parseInt(document.querySelector("#icfe_PHQ9-Q7_DropDownList").value);
+            var PHQ9Q8 = parseInt(document.querySelector("#icfe_PHQ9-Q8_DropDownList").value);
+            var PHQ9Q9 = parseInt(document.querySelector("#icfe_PHQ9-Q9_DropDownList").value);
+            var PHQ9Q10 = document.querySelector("#icfe_PHQ9-Q10_DropDownList");
+
+            var trackingScore = 0;
+
+            if (isNaN(PHQ9Q1)) {PHQ9Q1 = 0} else {trackingScore += 1}
+            if (isNaN(PHQ9Q2)) {PHQ9Q2 = 0} else {trackingScore += 1}
+            if (isNaN(PHQ9Q3)) {PHQ9Q3 = 0} else {trackingScore += 1}
+            if (isNaN(PHQ9Q4)) {PHQ9Q4 = 0} else {trackingScore += 1}
+            if (isNaN(PHQ9Q5)) {PHQ9Q5 = 0} else {trackingScore += 1}
+            if (isNaN(PHQ9Q6)) {PHQ9Q6 = 0} else {trackingScore += 1}
+            if (isNaN(PHQ9Q7)) {PHQ9Q7 = 0} else {trackingScore += 1}
+            if (isNaN(PHQ9Q8)) {PHQ9Q8 = 0} else {trackingScore += 1}
+            if (isNaN(PHQ9Q9)) {PHQ9Q9 = 0} else {trackingScore += 1}
+
+            
+            var finalResult = "";
+            var finalScoreResult = PHQ9Q1 + PHQ9Q2 + PHQ9Q3 + PHQ9Q4 + PHQ9Q5 + PHQ9Q6 + PHQ9Q7 + PHQ9Q8 + PHQ9Q9;
+
+            if(trackingScore == 9 && PHQ9Q10.selectedIndex > 0){
+                
+                if (finalScoreResult >= 1 && finalScoreResult <= 4) {
+                    finalResult ="Minimal Depression";
+                }
+                else if (finalScoreResult >= 5 && finalScoreResult <= 9 ) {
+                    finalResult ="Mild Depression";
+                }
+                else if (finalScoreResult >= 10 && finalScoreResult <= 14 ) {
+                    finalResult ="Moderate Depression";
+                }
+                else if (finalScoreResult >= 15 && finalScoreResult <= 19 ) {
+                    finalResult ="Moderately Severe Depression";
+                }
+                else if (finalScoreResult >= 20){
+                    finalResult ="Severe Depression";
+                }
+                 else{
+                    finalResult = "No Depression"
+                } 
+                return `${finalResult}: Score: ${finalScoreResult}`
+            }
+
+            /* else if (trackingScore == 9 && finalScoreResult == 0) {
+                 console.log("no depression section")
+                 finalResult = "No Depression";
+                 return `${finalResult}: Score ${finalScoreResult}`;
+             }   */
+            
+            else{
+                return alert("Please answer all questions to calculate a score");
+                
+
+            }
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>
