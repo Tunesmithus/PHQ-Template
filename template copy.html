@@ -209,17 +209,73 @@
 
             $("#btnAssessmentComplete").click(function(){
                 setButtonState('btnAssessmentComplete', '...Processing...', true);
-                var assessmentResult = calculateResults();
-                var finalScore = assessmentResult["resultScore"];
-                var finalResult = assessmentResult["result"];
 
-                if (finalScore != -100) {
+                if ($("#icfe_AssessmentLastTwoWeeks_DropDownList").val() == "does not have ") {
+                    //After 14 days assessment variable results
+                    var assessmentResult = calculateResults();
+                    var finalScore = assessmentResult["resultScore"];
+                    var finalResult = assessmentResult["result"];
+                    
+                    if(finalScore != -100){
+                        $("#icfe_TotalScore_Hidden").val(finalScore);
                     $("#icfe_FinalResult_CalculatedField").html(finalResult);
                     $("#icfe_AssessmentComplete_Hidden").val(1);
                     $('#EncounterAssessmentForm  #ichdn_Complete').val('true');
-                    $('#EncounterAssessmentForm  #ichdn_FinalResult').val(finalResult);
-                    saveResults();
+                    $('#EncounterAssessmentForm  #ichdn_FinalResult').val(finalScore);
+                    $.when(saveChartAssessmentsForm())
+					.done(function(){
+						setButtonState("btnAssessmentComplete", "Complete", false);
+						$("#ichdn_AssessmentLocked").val("1");
+						$('#btnAssessmentComplete').addClass('d-none');
+						$('#btnAssessmentDelete').addClass('d-none');
+						$('#btnAssessmentEdit').removeClass('d-none');
+						$('#btnAssessmentDone').removeClass('d-none');
+						$(".selectedAssessment a.assessmentLink").text(finalScore);
+						disableContent("#EncounterAssessmentForm", ["#btnAssessmentEdit", "#btnAssessmentComplete", "#btnAssessmentDelete"]);
+					})
+					.fail(function(){
+						$("#ichdn_Complete").val("False");
+						$('#btnAssessmentComplete').addClass('d-none');
+						$('#btnAssessmentDelete').addClass('d-none');
+						$('#btnAssessmentEdit').removeClass('d-none');
+						
+					});
+                    }
+					
                 }
+				else if($("#icfe_AssessmentLastTwoWeeks_DropDownList").val() == "has "){
+                    //Within 14 days assessment variable results
+                    var previousResult = previousAssessmentValues();
+                    var finalScoreOfPreviousAssessment = previousResult["resultScore"];
+                    var finalResultOfPreviousAssessment = previousResult["result"];
+                    if(finalScore != -100){
+                        $("#icfe_TotalScore_Hidden").val(finalScore);
+                            $("#icfe_FinalResult_CalculatedField").html("");
+                            $("#icfe_AssessmentComplete_Hidden").val(1);
+                            $('#EncounterAssessmentForm  #ichdn_Complete').val('true');
+                            $('#EncounterAssessmentForm  #ichdn_FinalResult').val(finalScoreOfPreviousAssessment);
+                            $.when(saveChartAssessmentsForm())
+                            .done(function(){
+                                setButtonState("btnAssessmentComplete", "Complete", false);
+                                $("#ichdn_AssessmentLocked").val("1");
+                                $('#btnAssessmentComplete').addClass('d-none');
+                                $('#btnAssessmentDelete').addClass('d-none');
+                                $('#btnAssessmentEdit').removeClass('d-none');
+                                $('#btnAssessmentDone').removeClass('d-none');
+                                $(".selectedAssessment a.assessmentLink").text(finalScoreOfPreviousAssessment);
+                                disableContent("#EncounterAssessmentForm", ["#btnAssessmentEdit", "#btnAssessmentComplete", "#btnAssessmentDelete"]);
+                            })
+                            .fail(function(){
+                                $("#ichdn_Complete").val("False");
+                                $('#btnAssessmentComplete').addClass('d-none');
+                                $('#btnAssessmentDelete').addClass('d-none');
+                                $('#btnAssessmentEdit').removeClass('d-none');
+                                
+                            });
+                    }
+				
+				}
+				
                 else{
                     setButtonState('btnAssessmentComplete', 'Complete', false);
                 }
@@ -248,7 +304,12 @@
     });
 
     function calculateResults(){
+    
+    //PHQ9 Previous Assessement questions
+    var lastPHQ9Score = $("#icfe_LastScoreOfPHQ9_TextBox").val();
+    var lastPHQ9Date = $("#icfe_LastDateOfPHQ9_TextBox").val();
 
+    //PHQ9 Initial Questions
     var PHQ9Q1 = parseInt(document.querySelector("#icfe_PHQ9-Q1_DropDownList").value);
     var PHQ9Q2 = parseInt(document.querySelector("#icfe_PHQ9-Q2_DropDownList").value);
     var PHQ9Q3 = parseInt(document.querySelector("#icfe_PHQ9-Q3_DropDownList").value);
@@ -275,37 +336,51 @@
 
     var finalResult = "";
     var finalScoreResult = PHQ9Q1 + PHQ9Q2 + PHQ9Q3 + PHQ9Q4 + PHQ9Q5 + PHQ9Q6 + PHQ9Q7 + PHQ9Q8 + PHQ9Q9;
-
-    if(trackingScore == 9 && PHQ9Q10.selectedIndex > 0){
+        if ($("#icfe_AssessmentLastTwoWeeks_DropDownList").val() == "does not have ") {
+            if(trackingScore == 9 && PHQ9Q10.selectedIndex > 0){
         
-        if (finalScoreResult >= 1 && finalScoreResult <= 4) {
-            finalResult ="Minimal Depression";
+            if (finalScoreResult >= 1 && finalScoreResult <= 4) {
+                finalResult ="Minimal Depression";
+            }
+            else if (finalScoreResult >= 5 && finalScoreResult <= 9 ) {
+                finalResult ="Mild Depression";
+            }
+            else if (finalScoreResult >= 10 && finalScoreResult <= 14 ) {
+                finalResult ="Moderate Depression";
+            }
+            else if (finalScoreResult >= 15 && finalScoreResult <= 19 ) {
+                finalResult ="Moderately Severe Depression";
+            }
+            else {
+                finalResult ="Severe Depression";
+            }
+            return { result: finalResult, resultScore: finalScoreResult };
         }
-        else if (finalScoreResult >= 5 && finalScoreResult <= 9 ) {
-            finalResult ="Mild Depression";
-        }
-        else if (finalScoreResult >= 10 && finalScoreResult <= 14 ) {
-            finalResult ="Moderate Depression";
-        }
-        else if (finalScoreResult >= 15 && finalScoreResult <= 19 ) {
-            finalResult ="Moderately Severe Depression";
-        }
-        else {
-            finalResult ="Severe Depression";
-        }
-        return { result: finalResult, resultScore: finalScoreResult };
-    }
 
-    else if (trackingScore == 9 && finalScoreResult == 0) {
-        return { result: finalResult, resultScore: finalScoreResult };
-    } 
+        else if (trackingScore == 9 && finalScoreResult == 0) {
+            return { result: finalResult, resultScore: finalScoreResult };
+        } 
 
-    else{
-        alert("Please answer all questions to calculate a score");
-        return { result: "incomplete", resultScore: -100 };
-        
+        else{
+            alert("Please answer all questions to calculate a score");
+            return { result: "incomplete", resultScore: -100 };
+            
 
-    }
+        }
+        }
+        else if ($("#icfe_AssessmentLastTwoWeeks_DropDownList").val() == "has "){
+            if (lastPHQ9Date != "" && lastPHQ9Score != "") {
+                
+                return {result:"",resultScore: lastPHQ9Score}
+                
+            }
+            else{
+
+                alert("Please answer previous assessment questions")
+				return { result: "incomplete", resultScore: -100 };
+            }
+        }
+    
 
 
 }

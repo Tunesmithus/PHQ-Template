@@ -2,545 +2,559 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>Patient Heatlth Questionaire</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Patient Heatlth Questionaire</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
-   <!-- Convert this to an external style sheet -->
-   <style>
-       main>.container {
-           padding: 60px 15px 0;
-           margin-bottom: 5rem;
-       }
-       .sticky-footer {
-           position: sticky;
-           left: 0;
-           bottom: 0;
-           width: 100%;
-       }
-   </style>
+<!-- Convert this to an external style sheet -->
+<style>
+main>.container {
+padding: 60px 15px 0;
+margin-bottom: 5rem;
+}
+.sticky-footer {
+position: sticky;
+left: 0;
+bottom: 0;
+width: 100%;
+}
+</style>
 </head>
 
 <body class="d-flex flex-column h-100">
 
-    <main class="flex-shrink-0">
+<main class="flex-shrink-0">
 
-       <div class="container">
-        <div class="row">
-            <div class="col">
-                <h1 class="text-primary">PHQ9 Nursing Home</h1>
-            </div>
-           
-        </div>
-        <div class="row">
-            <div class="col">
-                <p class="lead"><strong>If PHQ9 (Patient Health Questionaire) has been done in the last 2 weeks </strong><em>(14 days)</em></p>
-            </div>
-        </div>
-           
-           <hr>
-           <div class="row mb-3"> 
-            <div class="col-6">
-                <label for="" class="form-label">Has Assessment been taken within the last 14 days?</label>
-            </div>
-            <div class="col-6">
-                <select name="" id="icfe_AssessmentLastTwoWeeks_DropDownList" class="form-select">
-                    <option disable selected></option>
-                    <option value = "1">Yes</option>
-                    <option value = "2">No</option>
-                </select>
-            </div>
-        </div>
-           <div class="row mb-3"> 
-                <div class="col-6">
-                    <label for="" class="form-label">What was of the score of the last assessment within 14 days?</label>
-                </div>
-                <div class="col-6">
-                    <input type="text" id="icfe_LastScoreOFPHQ9_TextBox" class="form-control">
-                </div>
-           </div>
-           <div class="row mb-3"> 
-                <div class="col-6">
-                    <label for="" class="form-label">What was the date of the last assessment within 14 days?</label>
-                </div>
-                <div class="col-6">
-                    <input type="date" id="icfe_LastDateOfPHQ9_TextBox" class="form-control">
-                </div>
-            </div>
-            <hr>
-            <div class="row mb-3"> 
-                <div class="col-6">
-                    <label for="" class="form-label">1.Little interest or pleasure in doing things</label>
-                </div>
-                <div class="col-6">
-                    <select name="" id="icfe_PHQ9-Q1_DropDownList" class="form-select">
-                        <option disable selected></option>
-                        <option value = "0">Not At All</option>
-                        <option value = "1">Several days</option>
-                        <option value = "2">More than half days</option>
-                        <option value = "3">Nearly every day</option>
-                    </select>
-                </div>
-           </div>
-           <div class="row mb-3"> 
-                <div class="col-6">
-                    <label for="" class="form-label">2. Feeling down, depressed, or hopeless</label>
-                </div>
-                <div class="col-6">
-                    <select name="" id="icfe_PHQ9-Q2_DropDownList" class="form-select">
-                        <option disable selected></option>
-                        <option value = "0">Not At All</option>
-                        <option value = "1">Several days</option>
-                        <option value = "2">More than half days</option>
-                        <option value = "3">Nearly every day</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mb-3"> 
-                <div class="col-6">
-                    <label for="" class="form-label">3. Trouble falling or staying asleep, or sleeping too much</label>
-                </div>
-                <div class="col-6">
-                    <select name="" id="icfe_PHQ9-Q3_DropDownList" class="form-select">
-                        <option disable selected></option>
-                        <option value = "0">Not At All</option>
-                        <option value = "1">Several days</option>
-                        <option value = "2">More than half days</option>
-                        <option value = "3">Nearly every day</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mb-3"> 
-                <div class="col-6">
-                    <label for="" class="form-label">4. Feeling tired or having little energy</label>
-                </div>
-                <div class="col-6">
-                    <select name="" id="icfe_PHQ9-Q4_DropDownList" class="form-select">
-                        <option disable selected></option>
-                        <option value = "0">Not At All</option>
-                        <option value = "1">Several days</option>
-                        <option value = "2">More than half days</option>
-                        <option value = "3">Nearly every day</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mb-3"> 
-                <div class="col-6">
-                    <label for="" class="form-label">5. Poor appetite or overeating</label>
-                </div>
-                <div class="col-6">
-                    <select name="" id="icfe_PHQ9-Q5_DropDownList" class="form-select">
-                        <option disable selected></option>
-                        <option value = "0">Not At All</option>
-                        <option value = "1">Several days</option>
-                        <option value = "2">More than half days</option>
-                        <option value = "3">Nearly every day</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mb-3"> 
-                <div class="col-6">
-                    <label for="" class="form-label">6. Feeling bad about yourself — or that you are a failure or 
-                        have let yourself or your family down</label>
-                </div>
-                <div class="col-6">
-                    <select name="" id="icfe_PHQ9-Q6_DropDownList" class="form-select">
-                        <option disable selected></option>
-                        <option value = "0">Not At All</option>
-                        <option value = "1">Several days</option>
-                        <option value = "2">More than half days</option>
-                        <option value = "3">Nearly every day</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mb-3"> 
-                <div class="col-6">
-                    <label for="" class="form-label">7. Trouble concentrating on things, such as reading the 
-                        newspaper or watching television</label>
-                </div>
-                <div class="col-6">
-                    <select name="" id="icfe_PHQ9-Q7_DropDownList" class="form-select">
-                        <option disable selected></option>
-                        <option value = "0">Not At All</option>
-                        <option value = "1">Several days</option>
-                        <option value = "2">More than half days</option>
-                        <option value = "3">Nearly every day</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mb-3"> 
-                <div class="col-6">
-                    <label for="" class="form-label">8.  Moving or speaking so slowly that other people could have 
-                        noticed? Or the opposite — being so fidgety or restless 
-                        that you have been moving around a lot more than usual </label>
-                </div>
-                <div class="col-6">
-                    <select name="" id="icfe_PHQ9-Q8_DropDownList" class="form-select">
-                        <option disable selected></option>
-                        <option value = "0">Not At All</option>
-                        <option value = "1">Several days</option>
-                        <option value = "2">More than half days</option>
-                        <option value = "3">Nearly every day</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mb-3"> 
-                <div class="col-6">
-                    <label for="" class="form-label">9. Thoughts that you would be better off dead or of hurting 
-                        yourself in some way </label>
-                </div>
-                <div class="col-6">
-                    <select name="" id="icfe_PHQ9-Q9_DropDownList" class="form-select">
-                        <option disable selected></option>
-                        <option value = "0">Not At All</option>
-                        <option value = "1">Several days</option>
-                        <option value = "2">More than half days</option>
-                        <option value = "3">Nearly every day</option>
-                    </select>
-                    <div class="row">
-                        <div class="col-12 mt-2">
-                            <p><strong>Screening Score&nbsp;:</strong><span id="result"></span></p>
-                        </div>
-                       
-                    </div>
-                </div>
-            </div>
-            <hr size="4px">
-            <div class="row mb-3"> 
-                <div class="col-6">
-                    <label for="" class="form-label">If you checked off <u>any</u> problems, how <u>difficult</u>
-                        have these problems made it for you to do
-                        your work, take care of things at home, or get
-                        along with other people? </label>
-                </div>
-                <div class="col-6">
-                    <select name="" id="icfe_PHQ9-Q10_DropDownList" class="form-select">
-                        <option disable selected></option>
-                        <option value = "0">Not difficult At All</option>
-                        <option value = "1">Somewhat difficult</option>
-                        <option value = "2">Very Difficult</option>
-                        <option value = "3">Extremely Difficult</option>
-                    </select>
-                    <div class="row">
-                        <div class="col mt-2">
-                            <h5 class="text-danger d-none" id="userMessage">Please answer all questions</h5>
-                        </div>  
-                         
-                    </div>
-                </div>
-                
-            </div>
-            <hr size="4px">
-            <div class="row">
-                <div class="col">
-                    <button class="btn btn-danger" id="btnAssessmentDelete">Delete</button>
-                    <button class="btn btn-success float-end" id="btnAssessmentComplete">Complete</button>
-                    <button class="btn btn-primary mx-2 float-end" id="btnAssessmentEdit">Edit</button>
-                </div>
-            </div>
-        
-            
-       </div>
-       </div>
-       
+<div class="container">
+<div class="row">
+<div class="col">
+<h4><input type="text" id="currentDate"></h4>
+<h1 class="text-primary">PHQ9 Nursing Home</h1>
+</div>
+</div>
+<div class="row mb-3">
+<div class="col-6">
+<label for="" class="form-label">Has Assessment been taken within the last 14 days?</label>
+</div>
+<div class="col-6">
+<select name="" id="icfe_AssessmentLastTwoWeeks_DropDownList" class="form-select">
+<option disable selected></option>
+<option value = "1">Yes</option>
+<option value = "2">No</option>
+</select>
+</div>
+</div>
+<div id="previousAssessment" class="d-none">
+<div class="row mb-3">
+<div class="col-6">
+<label for="" class="form-label">What was of the score of the last assessment within 14 days?</label>
+</div>
+<div class="col-6">
+<input type="text" id="icfe_LastScoreOfPHQ9_TextBox" class="form-control">
+<span class="text-danger d-none" id="scoreValidation">Previous assessment score must be a numeric value between 0 and 27</span>
+</div>
+</div>
+<div class="row mb-3">
+<div class="col-6">
+<label for="" class="form-label">What was the date of the last assessment within 14 days?</label>
+</div>
+<div class="col-6">
+<input type="text" id="icfe_LastDateOfPHQ9_TextBox" class="form-control">
+<span class="text-danger d-none" id="dateValidation">Please enter a valid date format</span>
 
-    </main>
-    <footer class="footer mt-auto py-3 bg-light sticky-footer">
-        <div class="container-fluid text-center">
-            <span class="text-muted"> &copy; Developed by Drs. Robert L. Spitzer, Janet B.W. Williams, Kurt Kroenke and colleagues, with an educational grant from 
-             Pfizer Inc.</span>
-        </div>
-    </footer>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
-    </script>
-    
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-    <script>
+</div>
+</div>
+</div>
+<div id="initialAssessment" class="d-none">
+
+<hr>
+<div class="row mb-3">
+<div class="col-6">
+<label for="" class="form-label">1.Little interest or pleasure in doing things</label>
+</div>
+<div class="col-6">
+<select name="" id="icfe_PHQ9-Q1_DropDownList" class="form-select">
+<option disable selected></option>
+<option value = "0">Not At All</option>
+<option value = "1">Several days</option>
+<option value = "2">More than half days</option>
+<option value = "3">Nearly every day</option>
+</select>
+</div>
+</div>
+<div class="row mb-3">
+<div class="col-6">
+<label for="" class="form-label">2. Feeling down, depressed, or hopeless</label>
+</div>
+<div class="col-6">
+<select name="" id="icfe_PHQ9-Q2_DropDownList" class="form-select">
+<option disable selected></option>
+<option value = "0">Not At All</option>
+<option value = "1">Several days</option>
+<option value = "2">More than half days</option>
+<option value = "3">Nearly every day</option>
+</select>
+</div>
+</div>
+<div class="row mb-3">
+<div class="col-6">
+<label for="" class="form-label">3. Trouble falling or staying asleep, or sleeping too much</label>
+</div>
+<div class="col-6">
+<select name="" id="icfe_PHQ9-Q3_DropDownList" class="form-select">
+<option disable selected></option>
+<option value = "0">Not At All</option>
+<option value = "1">Several days</option>
+<option value = "2">More than half days</option>
+<option value = "3">Nearly every day</option>
+</select>
+</div>
+</div>
+<div class="row mb-3">
+<div class="col-6">
+<label for="" class="form-label">4. Feeling tired or having little energy</label>
+</div>
+<div class="col-6">
+<select name="" id="icfe_PHQ9-Q4_DropDownList" class="form-select">
+<option disable selected></option>
+<option value = "0">Not At All</option>
+<option value = "1">Several days</option>
+<option value = "2">More than half days</option>
+<option value = "3">Nearly every day</option>
+</select>
+</div>
+</div>
+<div class="row mb-3">
+<div class="col-6">
+<label for="" class="form-label">5. Poor appetite or overeating</label>
+</div>
+<div class="col-6">
+<select name="" id="icfe_PHQ9-Q5_DropDownList" class="form-select">
+<option disable selected></option>
+<option value = "0">Not At All</option>
+<option value = "1">Several days</option>
+<option value = "2">More than half days</option>
+<option value = "3">Nearly every day</option>
+</select>
+</div>
+</div>
+<div class="row mb-3">
+<div class="col-6">
+<label for="" class="form-label">6. Feeling bad about yourself — or that you are a failure or
+have let yourself or your family down</label>
+</div>
+<div class="col-6">
+<select name="" id="icfe_PHQ9-Q6_DropDownList" class="form-select">
+<option disable selected></option>
+<option value = "0">Not At All</option>
+<option value = "1">Several days</option>
+<option value = "2">More than half days</option>
+<option value = "3">Nearly every day</option>
+</select>
+</div>
+</div>
+<div class="row mb-3">
+<div class="col-6">
+<label for="" class="form-label">7. Trouble concentrating on things, such as reading the
+newspaper or watching television</label>
+</div>
+<div class="col-6">
+<select name="" id="icfe_PHQ9-Q7_DropDownList" class="form-select">
+<option disable selected></option>
+<option value = "0">Not At All</option>
+<option value = "1">Several days</option>
+<option value = "2">More than half days</option>
+<option value = "3">Nearly every day</option>
+</select>
+</div>
+</div>
+<div class="row mb-3">
+<div class="col-6">
+<label for="" class="form-label">8. Moving or speaking so slowly that other people could have
+noticed? Or the opposite — being so fidgety or restless
+that you have been moving around a lot more than usual </label>
+</div>
+<div class="col-6">
+<select name="" id="icfe_PHQ9-Q8_DropDownList" class="form-select">
+<option disable selected></option>
+<option value = "0">Not At All</option>
+<option value = "1">Several days</option>
+<option value = "2">More than half days</option>
+<option value = "3">Nearly every day</option>
+</select>
+</div>
+</div>
+<div class="row mb-3">
+<div class="col-6">
+<label for="" class="form-label">9. Thoughts that you would be better off dead or of hurting
+yourself in some way </label>
+</div>
+<div class="col-6">
+<select name="" id="icfe_PHQ9-Q9_DropDownList" class="form-select">
+<option disable selected></option>
+<option value = "0">Not At All</option>
+<option value = "1">Several days</option>
+<option value = "2">More than half days</option>
+<option value = "3">Nearly every day</option>
+</select>
+<div class="row">
+<div class="col-12 mt-2">
+<p><strong>Screening Score&nbsp;:</strong><span id="result"></span></p>
+</div>
+</div>
+</div>
+</div>
+<hr size="4px">
+<div class="row mb-3">
+<div class="col-6">
+<label for="" class="form-label">If you checked off <u>any</u> problems, how <u>difficult</u>
+have these problems made it for you to do
+your work, take care of things at home, or get
+along with other people? </label>
+</div>
+<div class="col-6">
+<select name="" id="icfe_PHQ9-Q10_DropDownList" class="form-select">
+<option disable selected></option>
+<option value = "0">Not difficult At All</option>
+<option value = "1">Somewhat difficult</option>
+<option value = "2">Very Difficult</option>
+<option value = "3">Extremely Difficult</option>
+</select>
+<div class="row">
+<div class="col mt-2">
+<h5 class="text-danger d-none" id="userMessage">Please answer all questions</h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr size="4px">
+<div class="row">
+<div class="col">
+<button class="btn btn-danger" id="btnAssessmentDelete">Delete</button>
+<button class="btn btn-success float-end" id="btnAssessmentComplete">Complete</button>
+<button class="btn btn-primary mx-2 float-end" id="btnAssessmentEdit">Edit</button>
+</div>
+</div>
+</div>
+</div>
+
+</main>
+<footer class="footer mt-auto py-3 bg-light sticky-footer">
+<div class="container-fluid text-center">
+<span class="text-muted"> &copy; Developed by Drs. Robert L. Spitzer, Janet B.W. Williams, Kurt Kroenke and colleagues, with an educational grant from
+Pfizer Inc.</span>
+</div>
+</footer>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+</script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script>
+
+$(document).ready(function(){
 
 
-        $(document).ready(function(){
+// var inUse = $("AreaInUse").val();
 
-            disableAllQuestions();
-            
-            $("#icfe_AssessmentLastTwoWeeks_DropDownList").on("change", function(){
+// if ($("#ichdn_ForCurrentEncounter").val()==0) {
+// $("#btnAssessmentComplete").addClass("d-none");
+// $("#btnAssessmentDelete").addClass("d-none");
+// $("#btnAssessmentEdit").addClass("d-none");
+// }else if ($("#EncounterAssessmentForm #ichdn_Complete").val().toLowerCase() == 'true') {
+// $("#btnAssessmentComplete").addClass('d-none');
+// $("#btnAssessmentDelete").addClass('d-none');
 
-            disablePHQ9Questions();
+// if (IsNullOrEmpty(encounterLocked) && $("#ichdn_ForCurrentEncounter").val() == "1") {
+// $('#btnAssessmentEdit').removeClass('d-none');
+// }
+// disableContent("#EncounterAssessmentForm", ["#btnAssessmentEdit", "#btnAssessmentComplete", "#btnAssessmentDelete"])
+// }
 
-            });
+// if(inUse == "True" || chartAuditor == "True"){
+// $("#btnAssessmentComplete").addClass("d-none");
+// $("#btnAssessmentDelete").addClass("d-none");
+// $("#btnAssessmentEdit").addClass("d-none");
+// disableContent("#EncounterAssessmentForm",[ "#btnAssessmentEdit", "#btnAssessmentComplete", "#btnAssessmentDelete"] )
+// }
 
-            // var inUse = $("AreaInUse").val();
-
-            // if ($("#ichdn_ForCurrentEncounter").val()==0) {
-            //     $("#btnAssessmentComplete").addClass("d-none");
-            //     $("#btnAssessmentDelete").addClass("d-none");
-            //     $("#btnAssessmentEdit").addClass("d-none");
-            // }else if ($("#EncounterAssessmentForm  #ichdn_Complete").val().toLowerCase() == 'true') {
-            //     $("#btnAssessmentComplete").addClass('d-none');
-            //     $("#btnAssessmentDelete").addClass('d-none');
-
-            //     if (IsNullOrEmpty(encounterLocked) && $("#ichdn_ForCurrentEncounter").val() == "1") {
-            //         $('#btnAssessmentEdit').removeClass('d-none');
-            //     }
-            //     disableContent("#EncounterAssessmentForm", ["#btnAssessmentEdit", "#btnAssessmentComplete", "#btnAssessmentDelete"])
-            // }
-
-            // if(inUse == "True" || chartAuditor == "True"){
-            //     $("#btnAssessmentComplete").addClass("d-none");
-            //     $("#btnAssessmentDelete").addClass("d-none");
-            //     $("#btnAssessmentEdit").addClass("d-none");
-            //     disableContent("#EncounterAssessmentForm",[ "#btnAssessmentEdit", "#btnAssessmentComplete", "#btnAssessmentDelete"] )
-            // }
-
-            // $("#btnAssessmentEdit").click(function(){
-            //     $("#btnAssessmentComplete").removeClass("d-none");
-            //     $("#btnAssessmentDelete").removeClass("d-none");
-            //     $("#btnAssessmentEdit").addClass("d-none");
-            //     $("#ichdn_Complete").val("false");
-            //     $("#ichdn_AssessmentLocked").val("0");
-            //     $("#icfe_FinalResult_TextBox").val("");
-            //     $("#icfe_AssessmentComplete_Hidden").val(0);
-            //     $('#EncounterAssessmentForm  #ichdn_FinalResult').val('');
-            //     $(".selectedAssessment a.assessmentLink").text("Partial");
-            //     enableContent("#EncounterAssessmentForm");
-            // });
-
-        
-
-            // $("#btnAssessmentDelete").click(function(){
-                
-            //     deleteAssessmentConfirmation();
-            // });
-
-            // $("[id^='icfe_']").on('change', function(){
-            //     updateAssessmentNarrative();
-            // });
-
-            // $("#btnAssessmentComplete").click(function(){
-            //     setButtonState('btnAssessmentComplete', '...Processing...', true);
-            //     var assessmentResult = calculateResults();
-            //     var finalScore = assessmentResult["resultScore"];
-            //     var finalResult = assessmentResult["result"];
+// $("#btnAssessmentEdit").click(function(){
+// $("#btnAssessmentComplete").removeClass("d-none");
+// $("#btnAssessmentDelete").removeClass("d-none");
+// $("#btnAssessmentEdit").addClass("d-none");
+// $("#ichdn_Complete").val("false");
+// $("#ichdn_AssessmentLocked").val("0");
+// $("#icfe_FinalResult_TextBox").val("");
+// $("#icfe_AssessmentComplete_Hidden").val(0);
+// $('#EncounterAssessmentForm #ichdn_FinalResult').val('');
+// $(".selectedAssessment a.assessmentLink").text("Partial");
+// enableContent("#EncounterAssessmentForm");
+// });
 
 
-            //     if (finalScore != -100) {
-            //         $("#icfe_FinalResult_CalculatedField").html(finalResult);
-            //         $("#icfe_AssessmentComplete_Hidden").val(1);
-            //         $('#EncounterAssessmentForm  #ichdn_Complete').val('true');
-            //         $('#EncounterAssessmentForm  #ichdn_FinalResult').val(finalResult);
-            //         saveResults();
-            //     }
-            //     else{
-            //         setButtonState('btnAssessmentComplete', 'Complete', false);
-            //     }
-            // });
+// $("#btnAssessmentDelete").click(function(){
+// deleteAssessmentConfirmation();
+// });
 
-            $("#btnAssessmentComplete").click(function(){
+// $("[id^='icfe_']").on('change', function(){
+// updateAssessmentNarrative();
+// });
 
-                if($("#icfe_AssessmentLastTwoWeeks_DropDownList").val() == "1"){
+// $("#btnAssessmentComplete").click(function(){
+// setButtonState('btnAssessmentComplete', '...Processing...', true);
+// var assessmentResult = calculateResults();
+// var finalScore = assessmentResult["resultScore"];
+// var finalResult = assessmentResult["result"];
 
-                    
-                    var previousResults = previousAssessmentValues();
-                    if(previousResults == undefined){
-                        document.getElementById("result").innerHTML = null;
-                    }
-                    else{
-                        document.getElementById("result").innerHTML = previousResults
-                        $("#icfe_LastScoreOFPHQ9_TextBox").attr("disabled", true);
-                        $("#icfe_LastDateOfPHQ9_TextBox").attr("disabled", true);
-                    }
+// if (finalScore != -100) {
+// $("#icfe_FinalResult_CalculatedField").html(finalResult);
+// $("#icfe_AssessmentComplete_Hidden").val(1);
+// $('#EncounterAssessmentForm #ichdn_Complete').val('true');
+// $('#EncounterAssessmentForm #ichdn_FinalResult').val(finalResult);
+// saveResults();
+// }
+// else{
+// setButtonState('btnAssessmentComplete', 'Complete', false);
+// }
+// });
 
-                    
-                }
-                else if($("#icfe_AssessmentLastTwoWeeks_DropDownList").val() == "2"){
-                    
-                    var screeningResults = calculateResults();
+$("#icfe_LastScoreOfPHQ9_TextBox").blur(function(){
+var numbersOnly = /^[0-9]*$/;
+var scoreInput = $("#icfe_LastScoreOfPHQ9_TextBox").val();
 
-                    if (screeningResults == undefined) {
-                        document.getElementById("result").innerHTML = null;
+if (scoreInput > 27 || scoreInput < 0 || !numbersOnly.test(scoreInput)) {
+        $("#scoreValidation").removeClass("d-none");
+        scoreInput = $("#icfe_LastScoreOfPHQ9_TextBox").val(null);
+        this.focus();
+    }
+    else{
+        $("#scoreValidation").addClass("d-none");
+    }
+});
 
-                    }
-                    else{
-                        document.getElementById("result").innerHTML = screeningResults;
-                    } 
-                }
+const date = new Date();
+let day = date.getDay() + 4;
+let month = date.getMonth() + 1;
+let year = date.getFullYear();
 
-            });
+$("#currentDate").val(month + '/' + day + '/' + year);
 
 
-            $("#btnAssessmentEdit").click(function(){
-                if($("#icfe_LastScoreOFPHQ9_TextBox").val() != "" && $("#icfe_LastDateOfPHQ9_TextBox").val() != ""){
-                    $("#icfe_LastScoreOFPHQ9_TextBox").attr("disabled", false);
-                    $("#icfe_LastDateOfPHQ9_TextBox").attr("disabled", false);
-                }
-                else{
-
-                }
-                
-
-            });
-
-        });
-
-        /* function saveResults(){
-            $.when(saveChartAssessmentsForm()).done(function(){
-                setButtonState("btnAssessmentComplete", "Complete", false);
-                $("#ichdn_AssessmentLocked").val("1");
-                $('#btnAssessmentComplete').addClass('d-none');
-                $('#btnAssessmentDelete').addClass('d-none');
-                $('#btnAssessmentEdit').removeClass('d-none');
-                $(".selectedAssessment a.assessmentLink").text(finalResult);
-                disableContent("#EncounterAssessmentForm", ["#btnAssessmentEdit", "#btnAssessmentComplete", "#btnAssessmentDelete"]);
-            })
-            .fail(function(){
-                $("#ichdn_Complete").val("False");
-                $('#btnAssessmentComplete').addClass('d-none');
-                $('#btnAssessmentDelete').addClass('d-none');
-                $('#btnAssessmentEdit').removeClass('d-none');
-                
-            })
+$("#icfe_LastDateOfPHQ9_TextBox").blur(function(){
+       /*  var validDateFormat = /^[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{2}$/;
+        var dateInput = $("#icfe_LastDateOfPHQ9_TextBox").val();
+        if(!validDateFormat.test(dateInput)){
+            alert("invalid date format")
         } */
+        var dateOfEncounter = $("#currentDate").val();
+        var dateOfService = $("#icfe_LastDateOfPHQ9_TextBox").val();
+        
+        
+        dateOfEncounter = new Date(dateOfEncounter).getDate();
+        dateOfService = new Date(dateOfService).getDate();
+
+        var difference = 14 - dateOfEncounter;
+
+        if(difference > 14){
+            alert("Last assessment date was more than 14 days");
+
+        }    
+        else{
+            alert("Assessment within date");
+        }
+        
+});
 
 
-        function previousAssessmentValues(){
 
-            var lastPHQ9Score = $("#icfe_LastScoreOFPHQ9_TextBox").val();
-            var lastPHQ9Date = $("#icfe_LastDateOfPHQ9_TextBox").val();
+$("#icfe_AssessmentLastTwoWeeks_DropDownList").on("change", function(){
+    $("#icfe_PHQ9-Q1_DropDownList").val(null);
+    $("#icfe_PHQ9-Q2_DropDownList").val("");
+    $("#icfe_PHQ9-Q3_DropDownList").val("");
+    $("#icfe_PHQ9-Q4_DropDownList").val("");
+    $("#icfe_PHQ9-Q5_DropDownList").val("");
+    $("#icfe_PHQ9-Q6_DropDownList").val("");
+    $("#icfe_PHQ9-Q7_DropDownList").val("");
+    $("#icfe_PHQ9-Q8_DropDownList").val("");
+    $("#icfe_PHQ9-Q9_DropDownList").val("");
+    $("#icfe_PHQ9-Q10_DropDownList").val("");
+    $("#icfe_LastDateOfPHQ9_TextBox").val("");
+    $("#icfe_LastScoreOFPHQ9_TextBox").val("");
+    disablePHQ9Questions();
 
-            
-            if (lastPHQ9Date != "" && lastPHQ9Score != "") {
-                
-                return lastPHQ9Score
-                
-            }
-            else{
+});
 
-                return alert("Please answer previous assessment questions")
+$("#btnAssessmentComplete").click(function(){
 
-            }
+    var screeningResults = calculateResults();
+    if(screeningResults == undefined){
+    document.getElementById("result").innerHTML = null;
+    }else{
+    document.getElementById("result").innerHTML = screeningResults;
+    }
 
-          
+});
+
+$("#btnAssessmentEdit").click(function(){
+    if($("#icfe_LastScoreOFPHQ9_TextBox").val() != "" && $("#icfe_LastDateOfPHQ9_TextBox").val() != ""){
+    $("#icfe_LastScoreOFPHQ9_TextBox").attr("disabled", false);
+    $("#icfe_LastDateOfPHQ9_TextBox").attr("disabled", false);
+    }
+    else if ($("#icfe_PHQ9-Q2_DropDownList").val() != ""){
+    $("#icfe_PHQ9-Q1_DropDownList").attr("disabled", false);
+    $("#icfe_PHQ9-Q2_DropDownList").attr("disabled", false);
+    $("#icfe_PHQ9-Q3_DropDownList").attr("disabled", false);
+    $("#icfe_PHQ9-Q4_DropDownList").attr("disabled",false );
+    $("#icfe_PHQ9-Q5_DropDownList").attr("disabled", false);
+    $("#icfe_PHQ9-Q6_DropDownList").attr("disabled",false );
+    $("#icfe_PHQ9-Q7_DropDownList").attr("disabled", false);
+    $("#icfe_PHQ9-Q8_DropDownList").attr("disabled", false);
+    $("#icfe_PHQ9-Q9_DropDownList").attr("disabled", false);
+    $("#icfe_PHQ9-Q10_DropDownList").attr("disabled", false);
+
+    }
+
+});
+
+
+});
+
+/* function saveResults(){
+$.when(saveChartAssessmentsForm()).done(function(){
+setButtonState("btnAssessmentComplete", "Complete", false);
+$("#ichdn_AssessmentLocked").val("1");
+$('#btnAssessmentComplete').addClass('d-none');
+$('#btnAssessmentDelete').addClass('d-none');
+$('#btnAssessmentEdit').removeClass('d-none');
+$(".selectedAssessment a.assessmentLink").text(finalResult);
+disableContent("#EncounterAssessmentForm", ["#btnAssessmentEdit", "#btnAssessmentComplete", "#btnAssessmentDelete"]);
+})
+.fail(function(){
+$("#ichdn_Complete").val("False");
+$('#btnAssessmentComplete').addClass('d-none');
+$('#btnAssessmentDelete').addClass('d-none');
+$('#btnAssessmentEdit').removeClass('d-none');
+})
+} */
+
+/* function previousAssessmentValues(){
+
+var lastPHQ9Score = $("#icfe_LastScoreOFPHQ9_TextBox").val();
+var lastPHQ9Date = $("#icfe_LastDateOfPHQ9_TextBox").val();
+
+if (lastPHQ9Date != "" && lastPHQ9Score != "") {
+return lastPHQ9Score
+}
+else{
+
+return alert("Please answer previous assessment questions")
+
+}
+
+
+} */
+
+function calculateResults(){
+
+    var lastPHQ9Score = $("#icfe_LastScoreOFPHQ9_TextBox").val();
+    var lastPHQ9Date = $("#icfe_LastDateOfPHQ9_TextBox").val();
+
+    var PHQ9Q1 = parseInt(document.querySelector("#icfe_PHQ9-Q1_DropDownList").value);
+    var PHQ9Q2 = parseInt(document.querySelector("#icfe_PHQ9-Q2_DropDownList").value);
+    var PHQ9Q3 = parseInt(document.querySelector("#icfe_PHQ9-Q3_DropDownList").value);
+    var PHQ9Q4 = parseInt(document.querySelector("#icfe_PHQ9-Q4_DropDownList").value);
+    var PHQ9Q5 = parseInt(document.querySelector("#icfe_PHQ9-Q5_DropDownList").value);
+    var PHQ9Q6 = parseInt(document.querySelector("#icfe_PHQ9-Q6_DropDownList").value);
+    var PHQ9Q7 = parseInt(document.querySelector("#icfe_PHQ9-Q7_DropDownList").value);
+    var PHQ9Q8 = parseInt(document.querySelector("#icfe_PHQ9-Q8_DropDownList").value);
+    var PHQ9Q9 = parseInt(document.querySelector("#icfe_PHQ9-Q9_DropDownList").value);
+    var PHQ9Q10 = document.querySelector("#icfe_PHQ9-Q10_DropDownList");
+
+    var trackingScore = 0;
+
+    if (isNaN(PHQ9Q1)) {PHQ9Q1 = 0} else {trackingScore += 1}
+    if (isNaN(PHQ9Q2)) {PHQ9Q2 = 0} else {trackingScore += 1}
+    if (isNaN(PHQ9Q3)) {PHQ9Q3 = 0} else {trackingScore += 1}
+    if (isNaN(PHQ9Q4)) {PHQ9Q4 = 0} else {trackingScore += 1}
+    if (isNaN(PHQ9Q5)) {PHQ9Q5 = 0} else {trackingScore += 1}
+    if (isNaN(PHQ9Q6)) {PHQ9Q6 = 0} else {trackingScore += 1}
+    if (isNaN(PHQ9Q7)) {PHQ9Q7 = 0} else {trackingScore += 1}
+    if (isNaN(PHQ9Q8)) {PHQ9Q8 = 0} else {trackingScore += 1}
+    if (isNaN(PHQ9Q9)) {PHQ9Q9 = 0} else {trackingScore += 1}
+
+    var finalResult = "";
+    var finalScoreResult = PHQ9Q1 + PHQ9Q2 + PHQ9Q3 + PHQ9Q4 + PHQ9Q5 + PHQ9Q6 + PHQ9Q7 + PHQ9Q8 + PHQ9Q9;
+
+    if($("#icfe_AssessmentLastTwoWeeks_DropDownList").val() == "2"){
+
+        if(trackingScore == 9 && PHQ9Q10.selectedIndex > 0){
+        if (finalScoreResult >= 1 && finalScoreResult <= 4) {
+        finalResult ="Minimal Depression";
+        }
+        else if (finalScoreResult >= 5 && finalScoreResult <= 9 ) {
+        finalResult ="Mild Depression";
+        }
+        else if (finalScoreResult >= 10 && finalScoreResult <= 14 ) {
+        finalResult ="Moderate Depression";
+        }
+        else if (finalScoreResult >= 15 && finalScoreResult <= 19 ) {
+        finalResult ="Moderately Severe Depression";
+        }
+        else if (finalScoreResult >= 20){
+        finalResult ="Severe Depression";
+        }
+        else if (finalScoreResult == 0){
+        finalResult = "No Depression"
+        }
+        return `${finalResult}: Score: ${finalScoreResult}`
+        }
+        else{
+    return alert("Please answer all questions to calculate a score");
+    }
+    }
+    else if ($("#icfe_AssessmentLastTwoWeeks_DropDownList").val() == "1"){
+
+        if (lastPHQ9Date != "" && lastPHQ9Score != "") {
+            return lastPHQ9Score;
+        }
+        else{
+
+        return alert("Please answer previous assessment questions")
 
         }
-
-        function calculateResults(){
-
-            var PHQ9Q1 = parseInt(document.querySelector("#icfe_PHQ9-Q1_DropDownList").value);
-            var PHQ9Q2 = parseInt(document.querySelector("#icfe_PHQ9-Q2_DropDownList").value);
-            var PHQ9Q3 = parseInt(document.querySelector("#icfe_PHQ9-Q3_DropDownList").value);
-            var PHQ9Q4 = parseInt(document.querySelector("#icfe_PHQ9-Q4_DropDownList").value);
-            var PHQ9Q5 = parseInt(document.querySelector("#icfe_PHQ9-Q5_DropDownList").value);
-            var PHQ9Q6 = parseInt(document.querySelector("#icfe_PHQ9-Q6_DropDownList").value);
-            var PHQ9Q7 = parseInt(document.querySelector("#icfe_PHQ9-Q7_DropDownList").value);
-            var PHQ9Q8 = parseInt(document.querySelector("#icfe_PHQ9-Q8_DropDownList").value);
-            var PHQ9Q9 = parseInt(document.querySelector("#icfe_PHQ9-Q9_DropDownList").value);
-            var PHQ9Q10 = document.querySelector("#icfe_PHQ9-Q10_DropDownList");
-
-            var trackingScore = 0;
-
-            if (isNaN(PHQ9Q1)) {PHQ9Q1 = 0} else {trackingScore += 1}
-            if (isNaN(PHQ9Q2)) {PHQ9Q2 = 0} else {trackingScore += 1}
-            if (isNaN(PHQ9Q3)) {PHQ9Q3 = 0} else {trackingScore += 1}
-            if (isNaN(PHQ9Q4)) {PHQ9Q4 = 0} else {trackingScore += 1}
-            if (isNaN(PHQ9Q5)) {PHQ9Q5 = 0} else {trackingScore += 1}
-            if (isNaN(PHQ9Q6)) {PHQ9Q6 = 0} else {trackingScore += 1}
-            if (isNaN(PHQ9Q7)) {PHQ9Q7 = 0} else {trackingScore += 1}
-            if (isNaN(PHQ9Q8)) {PHQ9Q8 = 0} else {trackingScore += 1}
-            if (isNaN(PHQ9Q9)) {PHQ9Q9 = 0} else {trackingScore += 1}
-
-            
-            var finalResult = "";
-            var finalScoreResult = PHQ9Q1 + PHQ9Q2 + PHQ9Q3 + PHQ9Q4 + PHQ9Q5 + PHQ9Q6 + PHQ9Q7 + PHQ9Q8 + PHQ9Q9;
-
-            if(trackingScore == 9 && PHQ9Q10.selectedIndex > 0){
-                
-                if (finalScoreResult >= 1 && finalScoreResult <= 4) {
-                    finalResult ="Minimal Depression";
-                }
-                else if (finalScoreResult >= 5 && finalScoreResult <= 9 ) {
-                    finalResult ="Mild Depression";
-                }
-                else if (finalScoreResult >= 10 && finalScoreResult <= 14 ) {
-                    finalResult ="Moderate Depression";
-                }
-                else if (finalScoreResult >= 15 && finalScoreResult <= 19 ) {
-                    finalResult ="Moderately Severe Depression";
-                }
-                else if (finalScoreResult >= 20){
-                    finalResult ="Severe Depression";
-                }
-                 else{
-                    finalResult = "No Depression"
-                } 
-                return `${finalResult}: Score: ${finalScoreResult}`
-            }
-            
-            else{
-                return alert("Please answer all questions to calculate a score");
-                
-            }
-
-
+    }
+        else{
+        return alert("Please choose a selection from the drop down");
         }
 
-        function disablePHQ9Questions(){
-            if($("#icfe_AssessmentLastTwoWeeks_DropDownList").val() == "1"){
-            $("#icfe_PHQ9-Q1_DropDownList").attr("disabled", true);
-            $("#icfe_PHQ9-Q2_DropDownList").attr("disabled", true);
-            $("#icfe_PHQ9-Q3_DropDownList").attr("disabled", true);
-            $("#icfe_PHQ9-Q4_DropDownList").attr("disabled", true);
-            $("#icfe_PHQ9-Q5_DropDownList").attr("disabled", true);
-            $("#icfe_PHQ9-Q6_DropDownList").attr("disabled", true);
-            $("#icfe_PHQ9-Q7_DropDownList").attr("disabled", true);
-            $("#icfe_PHQ9-Q8_DropDownList").attr("disabled", true);
-            $("#icfe_PHQ9-Q9_DropDownList").attr("disabled", true);
-            $("#icfe_PHQ9-Q10_DropDownList").attr("disabled", true);
-            $("#icfe_LastDateOfPHQ9_TextBox").attr("disabled", false);
-            $("#icfe_LastScoreOFPHQ9_TextBox").attr("disabled", false);
-            }
-            else{
-            $("#icfe_PHQ9-Q1_DropDownList").attr("disabled", false);
-            $("#icfe_PHQ9-Q2_DropDownList").attr("disabled", false);
-            $("#icfe_PHQ9-Q3_DropDownList").attr("disabled", false);
-            $("#icfe_PHQ9-Q4_DropDownList").attr("disabled",false );
-            $("#icfe_PHQ9-Q5_DropDownList").attr("disabled", false);
-            $("#icfe_PHQ9-Q6_DropDownList").attr("disabled",false );
-            $("#icfe_PHQ9-Q7_DropDownList").attr("disabled", false);
-            $("#icfe_PHQ9-Q8_DropDownList").attr("disabled", false);
-            $("#icfe_PHQ9-Q9_DropDownList").attr("disabled", false);
-            $("#icfe_PHQ9-Q10_DropDownList").attr("disabled", false);
-            $("#icfe_LastDateOfPHQ9_TextBox").attr("disabled", true);
-            $("#icfe_LastScoreOFPHQ9_TextBox").attr("disabled", true);
-            
-        }
+    }
+
+    function disablePHQ9Questions(){
+        if($("#icfe_AssessmentLastTwoWeeks_DropDownList").val() == "1"){
+        $("#previousAssessment").removeClass("d-none");
+        $("#initialAssessment").addClass("d-none");
 
         }
-
-        function disableAllQuestions(){
-
-            $("#icfe_PHQ9-Q1_DropDownList").attr("disabled", true);
-            $("#icfe_PHQ9-Q2_DropDownList").attr("disabled", true);
-            $("#icfe_PHQ9-Q3_DropDownList").attr("disabled", true);
-            $("#icfe_PHQ9-Q4_DropDownList").attr("disabled", true);
-            $("#icfe_PHQ9-Q5_DropDownList").attr("disabled", true);
-            $("#icfe_PHQ9-Q6_DropDownList").attr("disabled", true);
-            $("#icfe_PHQ9-Q7_DropDownList").attr("disabled", true);
-            $("#icfe_PHQ9-Q8_DropDownList").attr("disabled", true);
-            $("#icfe_PHQ9-Q9_DropDownList").attr("disabled", true);
-            $("#icfe_PHQ9-Q10_DropDownList").attr("disabled", true);
-            $("#icfe_LastDateOfPHQ9_TextBox").attr("disabled", true);
-            $("#icfe_LastScoreOFPHQ9_TextBox").attr("disabled", true);
-
+        else if ($("#icfe_AssessmentLastTwoWeeks_DropDownList").val() == "2"){
+        $("#initialAssessment").removeClass("d-none");
+        $("#previousAssessment").addClass("d-none");
         }
+        else{
+        $("#initialAssessment").addClass("d-none");
+        $("#previousAssessment").addClass("d-none");
+    }
+
+}
 
 
-    </script>
+</script>
 </body>
 
 </html>
+
