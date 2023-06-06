@@ -65,7 +65,7 @@ width: 100%;
 </div>
 <div class="col-6">
 <input type="text" id="icfe_LastDateOfPHQ9_TextBox" class="form-control">
-<span class="text-danger d-none" id="dateValidation">Please enter a valid date format</span>
+<span class="text-danger d-none" id="dateValidationCheck">Date of last assessment must be no greater than 14 days</span>
 
 </div>
 </div>
@@ -347,27 +347,23 @@ $("#currentDate").val(month + '/' + day + '/' + year);
 
 
 $("#icfe_LastDateOfPHQ9_TextBox").blur(function(){
-       /*  var validDateFormat = /^[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{2}$/;
+    const date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    var currentDate = `${month}/${day}/${year}`;
+       var validDateFormat = /^[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{2}$/;
         var dateInput = $("#icfe_LastDateOfPHQ9_TextBox").val();
-        if(!validDateFormat.test(dateInput)){
-            alert("invalid date format")
-        } */
-        var dateOfEncounter = $("#currentDate").val();
-        var dateOfService = $("#icfe_LastDateOfPHQ9_TextBox").val();
         
-        
-        dateOfEncounter = new Date(dateOfEncounter).getDate();
-        dateOfService = new Date(dateOfService).getDate();
-
-        var difference = 14 - dateOfEncounter;
-
-        if(difference > 14){
-            alert("Last assessment date was more than 14 days");
-
-        }    
-        else{
-            alert("Assessment within date");
-        }
+       var dateCheck = dateValidation();
+       if (dateCheck > 14 || dateCheck < 0 || !validDateFormat.test(dateInput)) {
+        alert(dateCheck)
+        $("#dateValidationCheck").removeClass("d-none");
+       }
+       else{
+        $("#dateValidationCheck").addClass("d-none");
+        alert(dateCheck)
+       }
         
 });
 
@@ -549,6 +545,26 @@ function calculateResults(){
         $("#initialAssessment").addClass("d-none");
         $("#previousAssessment").addClass("d-none");
     }
+
+}
+
+function dateValidation(){
+
+    var dateOfService = $("#currentDate").val();
+    var dateOfAssessment = $("#icfe_LastDateOfPHQ9_TextBox").val();
+
+    //Date the last assessment within 14 days was taken
+    var date1 = new Date(dateOfAssessment);
+
+    //Date of clinic encounter or DOS
+    var date2 = new Date(dateOfService);
+
+    var dateDifferenceInMilliseconds = date2 - date1;
+
+    var oneDay = 24 * 60 * 60 * 1000;
+
+    var dateDifference = Math.round(dateDifferenceInMilliseconds/oneDay);
+    return dateDifference;
 
 }
 
